@@ -38,7 +38,7 @@ ta_data = load_ta_network("SiouxFalls")
 
 The return value is of the TA_Data type, which is defined as
 ```julia
-type TA_Data
+mutable struct TA_Data
     network_name::String
 
     number_of_zones::Int
@@ -91,7 +91,8 @@ Available optional arguments:
 For example, one may do:
 ```julia
 ta_data = load_ta_network("SiouxFalls")
-link_flow, link_travel_time, objective = ta_frank_wolfe(ta_data, method=:cfw, max_iter_no=50000, step=:newton, log=:on, tol=1e-5)
+link_flow, link_travel_time, objective = 
+ta_frank_wolfe(ta_data, method=:cfw, max_iter_no=50000, step=:newton, log=:on, tol=1e-5)
 ```
 
 The total system travel time can be simply computed as
